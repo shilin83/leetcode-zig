@@ -18,12 +18,11 @@ jobs:
         uses: mlugg/setup-zig@v1
         with:
           version: 0.13.0
+      - run: zig build test
       - name: Install kcov
         run: brew install kcov
       - name: Generate Coverage
-        run: |
-          zig build test
-          kcov --exclude-pattern=lib ./coverage .zig-cache/o/*/test
+        run: kcov --exclude-pattern=lib ./coverage .zig-cache/o/*/test
       - name: Upload Codecov
         uses: codecov/codecov-action@v3
         with:
