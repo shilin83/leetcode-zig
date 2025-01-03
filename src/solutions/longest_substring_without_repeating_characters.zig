@@ -36,7 +36,7 @@ test "3.无重复字符的最长子串" {
             .expected = 3,
         },
         .{
-            .s = "bbbbb",
+            .s = "bbbbbb",
             .expected = 1,
         },
         .{
