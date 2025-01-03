@@ -1,0 +1,30 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ "main" ]
+    paths: [ "**/*.zig" ]
+  pull_request:
+
+jobs:
+  run_test_and_upload_codecov:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Zig
+        uses: mlugg/setup-zig@v1
+        with:
+          version: 0.13.0
+      - name: Install kcov
+        run: brew install kcov
+      - name: Generate Coverage
+        run: |
+          zig build test
+          kcov ./coverage ./zig-cache/o/*/test
+      - name: Upload Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          directory: ./coverage/test
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: shilin83/leetcode-zig
+          fail_ci_if_error: true
