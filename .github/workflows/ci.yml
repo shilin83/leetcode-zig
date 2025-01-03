@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  ZIG_LOCAL_CACHE_DIR: ".zig-cache/o/*/test"
+  ZIG_LOCAL_CACHE_DIR: "/zig-cache"
 
 jobs:
   run_test_and_upload_codecov:
@@ -22,7 +22,7 @@ jobs:
       - name: Install kcov
         run: brew install kcov
       - name: Generate Coverage
-        run: kcov --exclude-pattern=lib ./coverage .${{ env.ZIG_LOCAL_CACHE_DIR }}
+        run: kcov --exclude-pattern=lib ./coverage ${{ env.ZIG_LOCAL_CACHE_DIR }}
       - name: Upload Codecov
         uses: codecov/codecov-action@v3
         with:
