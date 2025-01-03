@@ -6,9 +6,6 @@ on:
     paths: [ "**/*.zig" ]
   pull_request:
 
-env:
-  ZIG_LOCAL_CACHE_DIR: "/zig-cache"
-
 jobs:
   run_test_and_upload_codecov:
     runs-on: macos-latest
@@ -22,7 +19,7 @@ jobs:
       - name: Install kcov
         run: brew install kcov
       - name: Generate Coverage
-        run: kcov --exclude-pattern=lib ./coverage ${{ env.ZIG_LOCAL_CACHE_DIR }}
+        run: kcov --exclude-pattern=lib coverage .zig-cache/o/*/test
       - name: Upload Codecov
         uses: codecov/codecov-action@v3
         with:
