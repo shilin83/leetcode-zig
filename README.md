@@ -8,6 +8,7 @@
 
 ## 题目列表
 
-|  序号  |                       标题                        | 难度 |                方案                |
-|:----:|:-----------------------------------------------:|:--:|:--------------------------------:|
-| 0001 | [✅ 两数之和](https://leetcode.cn/problems/two-sum/) | 简单 | [Zig](src/solutions/two_sum.zig) |
+|  序号  |                           标题                            | 难度 |                    方案                    |
+|:----:|:-------------------------------------------------------:|:--:|:----------------------------------------:|
+| 0001 |     [✅ 两数之和](https://leetcode.cn/problems/two-sum/)     | 简单 |     [Zig](src/solutions/two_sum.zig)     |
+| 0002 | [✅ 两数相加](https://leetcode.cn/problems/add-two-numbers/) | 中等 | [Zig](src/solutions/add_two_numbers.zig) |
