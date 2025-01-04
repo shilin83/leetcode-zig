@@ -8,7 +8,7 @@ on:
 
 jobs:
   run_test_and_upload_codecov:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Install Zig
@@ -17,7 +17,7 @@ jobs:
           version: 0.13.0
       - run: zig build test --cache-dir zig-cache
       - name: Install kcov
-        run: brew install kcov
+        run: apt update && apt install -y kcov
       - name: Generate Coverage
         run: kcov --exclude-pattern=lib coverage zig-cache/o/*/test
       - name: Upload Codecov
