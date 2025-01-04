@@ -19,8 +19,8 @@ jobs:
         run: brew install kcov
       - name: Generate Coverage
         run: |
-          zig build test
-          kcov --exclude-pattern=lib coverage /Users/runner/.cache/zig/o/*/test
+          zig build test --cache-dir .zig-cache
+          kcov --exclude-pattern=lib coverage .zig-cache/o/*/test
       - name: Upload Codecov
         uses: codecov/codecov-action@v3
         with:
