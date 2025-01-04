@@ -15,11 +15,12 @@ jobs:
         uses: mlugg/setup-zig@v1
         with:
           version: 0.13.0
-      - run: zig build test --cache-dir zig-cache
       - name: Install kcov
-        run: sudo apt update && sudo apt install -y kcov
+        run: sudo apt-get install -y kcov
       - name: Generate Coverage
-        run: kcov --exclude-pattern=lib coverage zig-cache/o/*/test
+        run: |
+          zig build test --cache-dir zig-cache
+          kcov --exclude-pattern=lib coverage zig-cache/o/*/test
       - name: Upload Codecov
         uses: codecov/codecov-action@v3
         with:
