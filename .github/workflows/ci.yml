@@ -17,7 +17,7 @@ jobs:
           version: 0.13.0
       - run: zig build test --cache-dir zig-cache
       - name: Install kcov
-        run: apt update && apt install -y kcov
+        run: sudo apt update && sudo apt install -y kcov
       - name: Generate Coverage
         run: kcov --exclude-pattern=lib coverage zig-cache/o/*/test
       - name: Upload Codecov
