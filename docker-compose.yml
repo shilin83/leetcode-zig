@@ -1,0 +1,7 @@
+services:
+  leetcode-zig:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: leetcode-zig
+    container_name: leetcode-zig
