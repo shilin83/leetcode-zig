@@ -1,0 +1,6 @@
+yaml-files:
+  - "*.yml"
+  - "*.yaml"
+rules:
+  line-length:
+    max: 100
